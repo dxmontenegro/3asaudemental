@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Mente IA - Simulador de Saúde Mental</title>
+
+<style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body{
+        background: linear-gradient(135deg,#0f172a,#1e293b,#111827);
+        color:white;
+        min-height:100vh;
+        padding:20px;
+    }
+
+    .container{
+        max-width:1100px;
+        margin:auto;
+    }
+
+    .topo{
+        text-align:center;
+        margin-bottom:30px;
+    }
+
+    .topo h1{
+        font-size:3rem;
+        margin-bottom:10px;
+        color:#38bdf8;
+    }
+
+    .topo p{
+        color:#cbd5e1;
+        font-size:1.1rem;
+    }
+
+    .card{
+        background: rgba(255,255,255,0.06);
+        border:1px solid rgba(255,255,255,0.08);
+        border-radius:20px;
+        padding:25px;
+        margin-bottom:25px;
+        backdrop-filter: blur(10px);
+        box-shadow:0 0 25px rgba(0,0,0,0.3);
+    }
+
+    h2{
+        margin-bottom:20px;
+        color:#7dd3fc;
+    }
+
+    .grid{
+        display:grid;
+        grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+        gap:15px;
+    }
+
+    .option{
+        background:#1e293b;
+        border:2px solid transparent;
+        padding:14px;
+        border-radius:14px;
+        cursor:pointer;
+        transition:0.3s;
+        user-select:none;
+    }
+
+    .option:hover{
+        transform:scale(1.03);
+        border-color:#38bdf8;
+    }
+
+    .option input{
+        margin-right:10px;
+        transform:scale(1.2);
+    }
+
+    .botao{
+        display:block;
+        width:100%;
+        padding:18px;
+        border:none;
+        border-radius:18px;
+        background: linear-gradient(90deg,#06b6d4,#3b82f6);
+        color:white;
+        font-size:1.2rem;
+        font-weight:bold;
+        cursor:pointer;
+        transition:0.3s;
+        margin-top:25px;
+    }
+
+    .botao:hover{
+        transform:scale(1.02);
+        box-shadow:0 0 20px #38bdf8;
+    }
+
+    .resultado{
+        display:none;
+        margin-top:30px;
+        padding:25px;
+        border-radius:20px;
+        background:#0f172a;
+        border:2px solid #38bdf8;
+        animation: aparecer 0.5s ease;
+    }
+
+    @keyframes aparecer{
+        from{
+            opacity:0;
+            transform:translateY(20px);
+        }
+        to{
+            opacity:1;
+            transform:translateY(0);
+        }
+    }
+
+    .resultado h2{
+        margin-bottom:15px;
+    }
+
+    .diagnostico{
+        font-size:1.2rem;
+        line-height:1.7;
+        color:#e2e8f0;
+    }
+
+    .sugestoes{
+        margin-top:20px;
+        background:#1e293b;
+        padding:18px;
+        border-radius:15px;
+    }
+
+    .sugestoes li{
+        margin-bottom:10px;
+    }
+
+    .footer{
+        text-align:center;
+        margin-top:40px;
+        color:#94a3b8;
+        font-size:0.9rem;
+    }
+
+    .badge{
+        display:inline-block;
+        background:#0ea5e9;
+        padding:6px 12px;
+        border-radius:999px;
+        margin-bottom:15px;
+        font-size:0.9rem;
+    }
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="topo">
+        <div class="badge">🧠 3ºA • Saúde Mental + IA</div>
+        <h1>Mente IA</h1>
+        <p>
+            Simulador inteligente de emoções e bem-estar emocional.
+            Selecione abaixo como você está se sentindo hoje.
+        </p>
+    </div>
+
+    <div class="card">
+
+        <h2>💭 Como você está se sentindo?</h2>
+
+        <div class="grid">
+
+            <label class="option"><input type="checkbox" value="triste">😢 Triste</label>
+            <label class="option"><input type="checkbox" value="ansioso">😰 Ansioso</label>
+            <label class="option"><input type="checkbox" value="cansado">🥱 Muito cansado</label>
+            <label class="option"><input type="checkbox" value="feliz">😄 Feliz</label>
+            <label class="option"><input type="checkbox" value="motivado">🔥 Motivado</label>
+            <label class="option"><input type="checkbox" value="sozinho">🫥 Sentindo-se sozinho</label>
+            <label class="option"><input type="checkbox" value="desanimado">😞 Desanimado</label>
+            <label class="option"><input type="checkbox" value="estressado">🤯 Estressado</label>
+            <label class="option"><input type="checkbox" value="calmo">😌 Calmo</label>
+            <label class="option"><input type="checkbox" value="irritado">😠 Irritado</label>
+            <label class="option"><input type="checkbox" value="confuso">😵 Confuso</label>
+            <label class="option"><input type="checkbox" value="inseguro">😟 Inseguro</label>
+            <label class="option"><input type="checkbox" value="esperancoso">🌟 Esperançoso</label>
+            <label class="option"><input type="checkbox" value="semenergia">🔋 Sem energia</label>
+            <label class="option"><input type="checkbox" value="animado">🎉 Animado</label>
+            <label class="option"><input type="checkbox" value="preocupado">😬 Preocupado</label>
+            <label class="option"><input type="checkbox" value="sobrecarregado">📚 Sobrecarregado</label>
+            <label class="option"><input type="checkbox" value="focado">🎯 Focado</label>
+            <label class="option"><input type="checkbox" value="carente">💔 Carente</label>
+            <label class="option"><input type="checkbox" value="tranquilo">🌿 Tranquilo</label>
+            <label class="option"><input type="checkbox" value="semsono">🌙 Dormindo mal</label>
+            <label class="option"><input type="checkbox" value="commedo">😨 Com medo</label>
+            <label class="option"><input type="checkbox" value="empolgado">🚀 Empolgado</label>
+            <label class="option"><input type="checkbox" value="desmotivado">📉 Desmotivado</label>
+
+        </div>
+
+        <button class="botao" onclick="gerarDiagnostico()">
+            🧠 GERAR DIAGNÓSTICO
+        </button>
+
+        <div class="resultado" id="resultado">
+            <h2>📋 Resultado da IA</h2>
+
+            <div class="diagnostico" id="textoDiagnostico"></div>
+
+            <div class="sugestoes">
+                <h3>💡 Sugestões Inteligentes</h3>
+                <ul id="listaSugestoes"></ul>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        EEMTI DRAGÃO DO MAR - MACCE - 2026  / 3ºA
+    </div>
+
+</div>
+
+<script>
+
+function gerarDiagnostico(){
+
+    const checks = document.querySelectorAll('input[type="checkbox"]:checked');
+    const valores = Array.from(checks).map(c => c.value);
+
+    let diagnostico = "";
+    let sugestoes = [];
+
+    let negativos = [
+        "triste","ansioso","cansado","sozinho","desanimado",
+        "estressado","irritado","confuso","inseguro",
+        "semenergia","preocupado","sobrecarregado",
+        "carente","semsono","commedo","desmotivado"
+    ];
+
+    let positivos = [
+        "feliz","motivado","calmo","esperancoso",
+        "animado","focado","tranquilo","empolgado"
+    ];
+
+    let pontosNegativos = 0;
+    let pontosPositivos = 0;
+
+    valores.forEach(v=>{
+        if(negativos.includes(v)) pontosNegativos++;
+        if(positivos.includes(v)) pontosPositivos++;
+    });
+
+    if(valores.length === 0){
+
+        diagnostico = `
+        Você não selecionou nenhuma condição emocional.
+        Mesmo assim, lembrar de observar os próprios sentimentos
+        já é um grande passo para o autocuidado.
+        `;
+
+        sugestoes = [
+            "Tire alguns minutos para refletir sobre seu dia.",
+            "Converse com amigos ou familiares.",
+            "Faça algo que você gosta.",
+            "Cuide da qualidade do seu sono."
+        ];
+
+    }
+
+    else if(pontosNegativos >= 6){
+
+        diagnostico = `
+        A IA identificou sinais de possível sobrecarga emocional.
+        Você pode estar passando por um período de estresse,
+        ansiedade ou desgaste mental.
+        É importante desacelerar e buscar apoio emocional.
+        `;
+
+        sugestoes = [
+            "🧘 Faça pausas e respire profundamente.",
+            "📵 Diminua um pouco o tempo em telas.",
+            "🎵 Ouça músicas relaxantes.",
+            "🚶 Faça caminhadas leves.",
+            "💬 Conversar com alguém de confiança pode ajudar.",
+            "😴 Priorize o descanso e o sono."
+        ];
+
+    }
+
+    else if(pontosPositivos >= 5){
+
+        diagnostico = `
+        A IA percebeu muitos sinais positivos!
+        Você aparenta estar emocionalmente equilibrado,
+        motivado e com boa energia mental hoje.
+        `;
+
+        sugestoes = [
+            "✨ Continue cultivando hábitos saudáveis.",
+            "📚 Aproveite sua energia para aprender algo novo.",
+            "🤝 Compartilhe positividade com outras pessoas.",
+            "🏃 Mantenha atividades físicas e lazer.",
+            "🎯 Continue focando em seus objetivos."
+        ];
+
+    }
+
+    else{
+
+        diagnostico = `
+        A IA identificou um estado emocional misto.
+        Isso é totalmente comum: emoções variam ao longo dos dias.
+        Seu equilíbrio emocional pode melhorar com pequenas atitudes diárias.
+        `;
+
+        sugestoes = [
+            "☀️ Pegue um pouco de sol e ar livre.",
+            "💧 Hidrate-se bem.",
+            "📖 Faça atividades relaxantes.",
+            "🎮 Reserve um tempo para lazer.",
+            "🧠 Organize seus pensamentos.",
+            "💙 Seja gentil consigo mesmo."
+        ];
+
+    }
+
+    document.getElementById("resultado").style.display = "block";
+
+    document.getElementById("textoDiagnostico").innerHTML = diagnostico;
+
+    let lista = document.getElementById("listaSugestoes");
+    lista.innerHTML = "";
+
+    sugestoes.forEach(item=>{
+        lista.innerHTML += `<li>${item}</li>`;
+    });
+
+    window.scrollTo({
+        top:document.body.scrollHeight,
+        behavior:"smooth"
+    });
+
+}
+
+</script>
+
+</body>
+</html>
