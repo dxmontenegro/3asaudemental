@@ -3,80 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reflexão</title>
+    <title>Acesso Restrito</title>
     <style>
         body {
-            background-color: #121212;
-            color: #e0e0e0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0f0f0f;
+            color: #b0b0b0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
-            line-height: 1.6;
         }
 
-        .container {
-            max-width: 600px;
-            padding: 40px;
-            background: #1e1e1e;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            border-left: 5px solid #555;
-            text-align: justify;
+        .card {
+            background: #161616;
+            border: 1px solid #2a2a2a;
+            padding: 50px;
+            max-width: 550px;
+            border-radius: 4px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #ff4d4d, #800000);
         }
 
         h1 {
-            font-size: 1.2rem;
-            color: #888;
-            margin-bottom: 20px;
+            color: #fff;
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            letter-spacing: 1px;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: 400;
         }
 
         p {
-            font-size: 1.15rem;
+            line-height: 1.8;
             margin-bottom: 20px;
+            font-size: 1.05rem;
         }
 
         .highlight {
-            color: #ffffff;
-            font-weight: bold;
+            color: #ff4d4d;
+            font-weight: 500;
         }
 
-        .final-statement {
+        .footer-note {
             margin-top: 30px;
-            font-style: italic;
-            color: #f0f0f0;
-            border-top: 1px solid #333;
             padding-top: 20px;
-            text-align: center;
+            border-top: 1px solid #2a2a2a;
+            font-size: 0.9rem;
+            color: #666;
         }
 
-        .accent {
-            color: #ff4d4d; /* Um toque sutil de cor para a conclusão */
+        .contact-link {
+            display: block;
+            margin-top: 25px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            border: 1px solid #444;
+            padding: 12px;
+            transition: 0.3s;
+        }
+
+        .contact-link:hover {
+            background: #fff;
+            color: #000;
+            border-color: #fff;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>Reflexão</h1>
+    <div class="card">
+        <h1>Sistema Indisponível</h1>
         
         <p>
-            Às vezes, subestimamos o peso do que é dito e feito no cotidiano, mas a verdade é que não são necessários grandes desastres para nos abalar. Muitas vezes, são as <span class="highlight">pequenas palavras e atitudes</span> — um comentário afiado, um silêncio punitivo ou uma indiferença velada — que agridem e silenciam nossa saúde mental, desgastando-a pouco a pouco.
+            Muitas vezes, subestimamos o impacto do que dizemos, mas a verdade é amarga: <span class="highlight">nós pagamos caro pelo que falamos.</span> Pequenas palavras e atitudes são suficientes para destruir nossa saúde mental, corroendo a confiança que levou anos para ser construída.
         </p>
 
         <p>
-            A linha que separa a amizade do carinho genuíno é <span class="highlight">extremamente tênue</span>, e cruzar esse limite sem cuidado pode causar danos profundos. É nos detalhes da convivência que as máscaras costumam cair.
+            A linha que separa a amizade do carinho é extremamente tênue, e o descuido com essa fronteira revela faces que preferíamos não conhecer. <span class="highlight">Lamentável ....</span>
         </p>
 
-        <div class="final-statement">
-            Por isso, deixo aqui o meu registro: <br>
-            <span class="highlight accent">Obrigado por mostrar quem você realmente é.</span>
+        <div class="footer-note">
+            Página temporariamente fora do ar por tempo indeterminado.
         </div>
+
+        <a href="#" class="contact-link">ME PROCURE PARA REATIVAR O SISTEMA</a>
     </div>
 
 </body>
